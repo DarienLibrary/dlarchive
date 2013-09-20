@@ -1,0 +1,41 @@
+Back-end Cataloging Requirements
+================================
+
+Basic Description
+=================
+
+an interface that will allow librarians to take digitized content in different formats (video, PDF, images) and upload it to a server via an upload form. That form will also need to allow the librarian to enter metadata (field definitions will be provided by us) to be stored in a MySQL database. The content itself will be stored on disk with some kind of pointer in the database to indicate where it can be retrieved later.
+
+Specs
+=====
+
+Uses twitter-bootstrap (latest version)
+Password-protected
+Upload form with librarian-inputted metadata
+MySQL back-end
+Written in PHP 5.x
+PDF text/index extraction for storage in the database
+UTF-8 Charset
+Automatically generate a filename based upon available metadata
+INI file configuration of file/content upload and storage path
+Upload confirmaiton screen
+
+Optional
+========
+
+Search form to search for already-cataloged data so that it can be updated
+
+SQL Schema
+==========
+
+NOTE: For datetime_start and datetime_end, material uploaded may span a period of time.  For example, a PDF of scanned newspapers ranging from April 1, 1940 through April 17, 1940.  In that case, datetime_start would be 1940-04-01 00:00:00 and datetime_end would be 1940-04-17 23:59:59.  For a single date, just that day and time would be used (ie, a lecture recording that took place on April 17, 2013 from 5:00PM through 7:00PM).
+
+doc_id - Auto-incremented document id
+record_date - datetime field for when the record was created/uploaded/last updated
+format - Format of uploaded material (pdf, image, audio, video, text)
+datetime_start - Start of date-range for uploaded material
+datetime_end - End of date-range for uploaded material
+doc_title - Title of the document, given by the librarian
+doc_desc - (Optional) Description of the document
+doc_text - text/index/material extracted for indexing purposes by the script
+filename - filename of the document as it resides on the filesystem (do not include path, which is configurable via the INI file)
