@@ -45,9 +45,6 @@ class Upload extends MY_Controller {
 		if (!isset($_POST['debug'])) 
 		    // Move the temporary file to the resource's folder
 		    move_uploaded_file($source,$target);
-		else
-		    // Delete the temporary file
-		    unlink ($source);
 
 		// Generate the mysql record
 		$now = new DateTime();
@@ -101,6 +98,20 @@ class Upload extends MY_Controller {
 			'datetime_end'	    =>	$to,
 		    );
 		
+		if ($format == 'pdf'){
+		    $pdfbox_path = FCPATH."third_party/pdfbox.jar";
+		    if (isset($_POST['debug'])) 
+			$pdf_path = $source;
+		    else 
+			$pdf_path = $target;
+		    
+		    // extract text from pdf
+		    $command = "java -jar $pdfbox_path ExtractText -console -encoding utf-8 ".$pdf_path;
+		    $pdf_text = shell_exec("$command");
+		    // add one more field in the mysql record
+		    $data['doc_text'] = $pdf_text;
+		    
+		}
 		// If the debug checkbox was checked then do not store the data to
 		// database but send the record back for display
 		if (isset($_POST['debug'])){

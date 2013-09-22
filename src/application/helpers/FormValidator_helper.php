@@ -9,7 +9,7 @@ class FormValidator {
     
     function __construct($formRules) {
 	if (is_array($formRules)) {
-	    $this->$rules = $formRules;
+	    $this->rules = $formRules;
 	} else {
 	    die("FormValidator's constructor failed! Argument was not an array!");
 	}

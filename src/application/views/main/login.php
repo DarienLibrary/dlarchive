@@ -1,6 +1,3 @@
-<?php
-    include(dirname(__FILE__).'/header.php');
-?>
     <form method="POST" action="<? echo base_url()."main/login"; ?>" accept-charset="utf-8">
     <label for="username">Username: </label>
     <input type="text" name="username" id="password" value="" />
@@ -17,4 +14,4 @@
 	echo "<span style='color:red'>".$login_error."</span><br/>";
     }
     
-    include(dirname(__FILE__).'/footer.php');
+ 

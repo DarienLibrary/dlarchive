@@ -46,7 +46,7 @@ We use AJAX call to handle the form submittion, in order to diplsay an upload pr
                         progressbox.slideUp(); // hide progressbar
 			
 			// Check if Server and Codeigniter responde with an error. In that case diplay the error
-			if (response.status != 200) {
+			if ((response.status != 200)||(response.responseText.indexOf('Fatal error') != -1)) {
 			    $('body').append(response.responseText);
 			} else { 
 			    // Parse the response as a JSON object
@@ -62,13 +62,16 @@ We use AJAX call to handle the form submittion, in order to diplsay an upload pr
 			    } else {
 				// If we are in debug mode, display the database record that was sent back
 				if(obj[0] == 'debug'){
-				    $('#debug_area').append("Title: " + obj[1].doc_title + "<br/>");
-				    $('#debug_area').append("Description: "+obj[1].doc_desc + "<br/>");
-				    $('#debug_area').append("Record date: "+obj[1].record_date + "<br/>");
-				    $('#debug_area').append("Datetime start: "+obj[1].datetime_start + "<br/>");
-				    $('#debug_area').append("Datetime end: "+obj[1].datetime_end + "<br/>");
-				    $('#debug_area').append("Filename: "+obj[1].filename + "<br/>");
-				    $('#debug_area').append("Format: "+obj[1].format + "<br/>");
+				    $('#debug_area').append("<strong>Title:</strong> " + obj[1].doc_title + "<br/>");
+				    $('#debug_area').append("<strong>Description:</strong> "+obj[1].doc_desc + "<br/>");
+				    $('#debug_area').append("<strong>Record date:</strong> "+obj[1].record_date + "<br/>");
+				    $('#debug_area').append("<strong>Datetime start:</strong> "+obj[1].datetime_start + "<br/>");
+				    $('#debug_area').append("<strong>Datetime end:</strong> "+obj[1].datetime_end + "<br/>");
+				    $('#debug_area').append("<strong>Filename:</strong> "+obj[1].filename + "<br/>");
+				    $('#debug_area').append("<strong>Format:</strong> "+obj[1].format + "<br/>");
+				    if (obj[1].format == 'pdf'){
+					$('#debug_area').append("<strong>PDF Text:</strong> "+obj[1].doc_text + "<br/>");
+				    }
 				    $('#debug_area').removeClass('debug_area_off');
 				    $('#debug_area').addClass('debug_area_on');
 				} else {
@@ -97,7 +100,7 @@ We use AJAX call to handle the form submittion, in order to diplsay an upload pr
 	    <span class="error-field" id="description-error"></span>
 	    <br/>
 	    <div style="margin:5px">
-		<input type="radio" value="single" name="dateType" id="singleDate" checked="true">Single Date</input>
+		<input type="radio" value="single" name="dateType" id="singleDate" >Single Date</input>
 		<input type="radio" value="range" name="dateType" id ="dateRange">Date Range</input>
 	    </div>
 	    <div id="singleDateDiv">
@@ -116,11 +119,10 @@ We use AJAX call to handle the form submittion, in order to diplsay an upload pr
 	    <br/><br/>
 	    <div>
 		<input type="submit" value="Αποστολή" id="submitButton"/>
-		<input type="reset" value="Επαναφορά" id="resetButton"/>
 	    </div>
-
+	    <div id="progressbox"><div id="progressbar"></div ><div id="statustxt">0%</div ></div>
 	</form>
-	<div id="progressbox"><div id="progressbar"></div ><div id="statustxt">0%</div ></div>
 	<br/>
 	<div id="debug_area" class="debug_area_off"></div>
 	<a href="<? echo base_url().'main/logout'; ?>">Logout</a>
+<script type="text/javascript">$('#singleDate').prop('checked',true);</script>

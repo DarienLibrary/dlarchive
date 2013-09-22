@@ -24,16 +24,16 @@ echo link_tag('css/jquery-ui.css');
 	$( "#to" ).datepicker("option", "dateFormat", "d MM yy");
 	$("#singleDate").click(function() {
 	    $("#dateRangeDiv").hide();
+	    $("#singleDateDiv").show();
 	    $("#from").attr("disabled","disabled");
 	    $("#to").attr("disabled","disabled");
-	    $("#singleDateDiv").show();
 	    $("#datepicker").removeAttr("disabled");
 	});
 	$("#dateRange").click(function() {
+	    $("#singleDateDiv").hide();
 	    $("#dateRangeDiv").show();
 	    $("#from").removeAttr("disabled");
 	    $("#to").removeAttr("disabled");
-	    $("#singleDateDiv").hide();
 	    $("#datepicker").attr("disabled","disabled");
 	});
    });
