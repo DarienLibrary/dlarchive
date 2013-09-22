@@ -1,0 +1,72 @@
+#uploadForm {
+    width: 600px;
+    border: 1px solid gray;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+#uploadForm input {
+    margin: 5px;
+}
+
+#uploadForm label {
+    font-weight: bold;
+}
+
+.error-field {
+    color: red;
+}
+
+.debug_area_on {
+    width: 600px;
+    border: 1px solid blue;
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.debug_area_off {
+    width: 600px;
+    border: none;
+    margin: auto;
+    margin-top: 10px;
+    padding: 0px;
+}
+
+/*
+  To CSS για το progressbar στην σελίδα upload_song.php
+*/
+
+#progressbox {
+    background-color: #F7F7F7;
+    background-image: linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+    background-repeat: repeat-x;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    
+    border: 1px solid #0099CC;
+    position:relative;
+    margin: 10px;
+    display: none;
+    text-align:left;
+    height: 20px;
+}
+
+#progressbar {
+    background-color: #149BDF;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+    animation: 2s linear 0s normal none infinite progress-bar-stripes;
+    
+    width:10%;
+    height:100%;
+}
+
+#statustxt {
+    top:3px;
+    left:50%;
+    position:absolute;
+    display:inline-block;
+    color: #000000;
+}
