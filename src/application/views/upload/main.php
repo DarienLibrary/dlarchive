@@ -1,6 +1,3 @@
-<!-- 
-We use AJAX call to handle the form submittion, in order to diplsay an upload progress bar
--->
 <script>
  
         $(document).ready(function() {
@@ -90,39 +87,54 @@ We use AJAX call to handle the form submittion, in order to diplsay an upload pr
 	$attributes = array('id' => 'uploadForm', 'method' => 'POST');
 	echo form_open_multipart("upload/uploading",$attributes);	
 ?>
-	    <input type="checkbox" name="debug" id="debug" value="aaa" />Debuging mode<br/>
-	    <label for="title">Title: </label>
-	    <input type="text" name="title" id="title" value="" />
-	    <span class="error-field" id="title-error"></span>
+	    <div align="right">
+		<label class="checkboox" for="debug">
+		    <input type="checkbox" name="debug" id="debug" />
+		    <span>Debuging mode</span>
+		</label>
+	    </div>
 	    <br/>
-	    <label for="description">Description: </label><br/>
-	    <textarea name="description" id="description" ></textarea>
+	    <label for="title">Title: </label>
+	    <input type="text" name="title" id="title" value="" class="input-block-level" />
+	    <span class="error-field" id="title-error"></span>
+	    <br/><br/>
+	    <label for="description">Description: </label>
+	    <textarea name="description" id="description" class="input-block-level" ></textarea>
 	    <span class="error-field" id="description-error"></span>
 	    <br/>
-	    <div style="margin:5px">
-		<input type="radio" value="single" name="dateType" id="singleDate" >Single Date</input>
-		<input type="radio" value="range" name="dateType" id ="dateRange">Date Range</input>
-	    </div>
-	    <div id="singleDateDiv">
-		<label for="datepicker">Date:</label> <input type="text" name="datepicker" id="datepicker" />
-	    </div>
-	    <span class="error-field" id="datepicker-error"></span>
-	    <div id="dateRangeDiv" style="display:none">
-		From: <input type="text" name="from" id="from" disabled="disabled" />
-		To: <input type="text" name="to" id="to" disabled="disabled" />
-	    </div>
-	    <span class="error-field" id="from-error"></span><span id="to-error"></span>
+	    <table width="100%">
+		<tr>
+		    <td>
+			<div id="singleDateDiv">
+			    Date:
+			    <input type="text" name="datepicker" id="datepicker" />
+			</div>
+			<span class="error-field" id="datepicker-error"></span>
+			<div id="dateRangeDiv" style="display:none">
+			    From: <input type="text" name="from" id="from" disabled="disabled" />
+			    To: <input type="text" name="to" id="to" disabled="disabled" />
+			</div>
+			<span class="error-field" id="from-error"></span><span id="to-error"></span>
+		    </td>
+		    <td align="right">
+			<div style="margin:5px" id="dateTypeSelection">
+			    <input type="radio" value="single" name="dateType" id="singleDate">Single Date</input>
+			    &nbsp;&nbsp;&nbsp;
+			    <input type="radio" value="range" name="dateType" id ="dateRange">Date Range</input>
+			</div>
+		    </td>
+		</tr>
+	    </table>
 	    <br/>
-	    <label for="itemfile">File Selection: </label>
-	    <input type="file" name="itemfile" id="itemfile" />
+	    Document: 
+	    <input id="itemfile" name="itemfile" class="filestyle" type="file" data-icon="false" style="position: fixed; left: -500px;">
 	    <span class="error-field" id="itemfile-error"></span>
-	    <br/><br/>
-	    <div>
-		<input type="submit" value="Αποστολή" id="submitButton"/>
+	    <br/>
+	    <div align="center" style="margin-top: 20px">
+		<input type="submit" value="Submit" id="submitButton" class="btn btn-primary"/>
 	    </div>
 	    <div id="progressbox"><div id="progressbar"></div ><div id="statustxt">0%</div ></div>
 	</form>
-	<br/>
+	
 	<div id="debug_area" class="debug_area_off"></div>
-	<a href="<? echo base_url().'main/logout'; ?>">Logout</a>
 <script type="text/javascript">$('#singleDate').prop('checked',true);</script>

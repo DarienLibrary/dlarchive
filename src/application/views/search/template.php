@@ -7,11 +7,16 @@ echo link_tag('css/bootstrap.css');
 echo link_tag('css/bootstrap-responsive.css');
 echo link_tag('css/style.css');
 echo link_tag('css/jquery-ui.css');
+echo link_tag('css/footable.core.css');
+echo link_tag('css/footable.standalone.css');
 ?>
 <script type='text/javascript' src="<? echo base_url(); ?>/js/jquery.min.js" ></script>
 <script type='text/javascript' src="<? echo base_url(); ?>/js/jquery-ui.js" ></script>
 <script type="text/javascript" src="<? echo base_url();?>/js/jquery.form.js"></script>
 <script type='text/javascript' src="<? echo site_url(); ?>/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="<? echo site_url(); ?>/js/footable.js"></script>
+<script type='text/javascript' src="<? echo site_url(); ?>/js/footable.sort.js"></script>
+<script type='text/javascript' src="<? echo site_url(); ?>/js/footable.filter.js"></script>
 </head>
 <body>
     
@@ -40,6 +45,7 @@ echo link_tag('css/jquery-ui.css');
 	    }
 	    ?>
 	</div>
+	<div class="span2"></div>
     </div>
     <div class="row">
 	<div class="span2"></div>
@@ -78,5 +84,10 @@ echo link_tag('css/jquery-ui.css');
    });
 </script>
 <script type='text/javascript' src="<? echo site_url(); ?>/js/bootstrap-filestyle.min.js"></script>
+<script type='text/javascript'>
+ $(function() {
+      $('table').footable();
+    });
+</script>
 </body>
 </html>

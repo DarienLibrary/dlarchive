@@ -8,12 +8,12 @@ class Upload extends MY_Controller {
 	    if (!$this->session->userdata('username')){
 		redirect('main/login');
 	    }
-	    
-	    $this->load_view('upload/main');
+	    $data['page_title']='Upload document';
+	    $data['active'] = 'upload';
+	    $this->load_view('upload/main',$data);
 	}
 	
-	// Checks if the form data posted are valid
-	private function validate_form(){
+	private function validate_form(){	// Checks if the form data posted are valid
 	    // Load the validation rules for the upload form
 	    $this->load->helper('form_rules/upload');
 	    // Load the form validator class

@@ -6,7 +6,7 @@ class Main extends MY_Controller {
 	     if (!$this->session->userdata('username')){
 		redirect('main/login');
 	    } else {
-		redirect('upload/main');
+		redirect('upload');
 	    }
 	}
 
