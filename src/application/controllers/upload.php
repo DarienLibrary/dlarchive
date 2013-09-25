@@ -85,14 +85,14 @@ class Upload extends MY_Controller {
 		    $from = new DateTime($this->input->post('from'));
 		    $from = $from->format('Y-n-j G:i:s');
 		    $to = new DateTime($this->input->post('to'));
-		    $to = $from->format('Y-n-j G:i:s');
+		    $to = $to->format('Y-n-j G:i:s');
 		}
 		
 		$data = array (
 			'doc_title'	    =>  $this->input->post('title'),
 			'doc_desc'	    =>	$this->input->post('description'),
 			'record_date'	    =>	$time,
-			'filename'	    =>	$target,
+			'filename'	    =>	$filename,
 			'format'	    =>	$format,
 			'datetime_start'    =>	$from,
 			'datetime_end'	    =>	$to,
