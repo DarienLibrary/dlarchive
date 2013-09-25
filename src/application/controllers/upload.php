@@ -40,7 +40,7 @@ class Upload extends MY_Controller {
 		// Store the uploaded file
 		$source = $_FILES['itemfile']['tmp_name'];
 		$filename = $_FILES['itemfile']['name'];
-		$target = realpath(FCPATH.'/uploads/')."/".$filename;
+		$target = UPLOADPATH.$filename;
 		
 		if (!isset($_POST['debug'])) 
 		    // Move the temporary file to the resource's folder

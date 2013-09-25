@@ -70,7 +70,7 @@ class Manage extends MY_Controller {
 		    if (strlen($_FILES['itemfile']['name']) > 0){
 			$source = $_FILES['itemfile']['tmp_name'];
 			$filename = $_FILES['itemfile']['name'];
-			$target = realpath(FCPATH.'/uploads/')."/".$filename;
+			$target = UPLOADPATH.$filename;
 			move_uploaded_file($source,$target);
 			
 			unlink(realpath(FCPATH.'/uploads/')."/".$_POST['oldfile']);

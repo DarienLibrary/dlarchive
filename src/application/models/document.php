@@ -63,7 +63,7 @@ class Document extends CI_Model {
 	if ($this->db->delete('content')){
 	    // Beside the database record we have to delete the file, too!
 	   $filename = $info[0]['filename'];
-	   unlink(realpath(FCPATH.'/uploads/')."/".$filename);
+	   unlink(UPLOADPATH.$filename);
 	   return true;
 	} else {
 	    return false;

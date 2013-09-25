@@ -2,11 +2,6 @@
 
 $menuitems = array(
 	array(
-	    'label'   =>	'Home',
-	    'target'  =>	'main/index',
-	    'id'      =>	'home'
-	),
-	array(
 	    'label'   =>	'Upload',
 	    'target'  =>	'upload/index',
 	    'id'      =>	'upload'

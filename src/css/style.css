@@ -7,7 +7,7 @@
     padding: 5px;
 }
 
-#uploadForm {
+#uploadForm, #editForm {
     margin: auto;
     margin-top: 30px;
     text-align:  left;
@@ -15,10 +15,6 @@
 
 #uploadForm label {
    
-}
-
-.error-field {
-    color: red;
 }
 
 .debug_area_on {

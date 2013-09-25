@@ -190,6 +190,10 @@ if (defined('ENVIRONMENT'))
 
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
+
+// We load a customized .ini file that we have made
+$ini_vars = parse_ini_file('config.ini');
+define('UPLOADPATH',$ini_vars['upload_dir']);
 	
 /*
  * --------------------------------------------------------------------

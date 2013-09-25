@@ -50,12 +50,30 @@
 			    obj = JSON && JSON.parse(response.responseText) || $.parseJSON(response.responseText);
 			    // If there were validation errors, display them
 			    if (obj[0] == 'false') {
-				$('#title-error').append(obj[1].title);
-				$('#description-error').append(obj[1].description);
-				$('#datepicker-error').append(obj[1].datepicker);
-				$('#from-error').append(obj[1].from);
-				$('#to-error').append(obj[1].to);
-				$('#itemfile-error').append(obj[1].itemfile);
+				if (typeof obj[1].title !== 'undefined'){
+				    $('#title-error').append('<strong>Warning:</strong> ' + obj[1].title);
+				    $('#title-error').addClass('alert alert-error');
+				}
+				if (typeof obj[1].description !== 'undefined'){
+				    $('#description-error').append('<strong>Warning:</strong> ' + obj[1].description);
+				    $('#description-error').addClass('alert alert-error');
+				}
+				if (typeof obj[1].datepicker !== 'undefined'){
+				    $('#datepicker-error').append('<strong>Warning:</strong> ' + obj[1].datepicker);
+				    $('#datepicker-error').addClass('alert alert-error');
+				}
+				if (typeof obj[1].from !== 'undefined'){
+				    $('#from-error').append('<strong>Warning:</strong> ' + obj[1].from);
+				    $('#from-error').addClass('alert alert-error');
+				}
+				if (typeof obj[1].to !== 'undefined'){
+				    $('#to-error').append('<strong>Warning:</strong> ' + obj[1].to);
+				    $('#to-error').addClass('alert alert-error');
+				}
+				if (typeof obj[1].itemfile !== 'undefined'){
+				    $('#itemfile-error').append('<strong>Warning:</strong> ' + obj[1].itemfile);
+				    $('#itemfile-error').addClass('alert alert-error');
+				}
 			    } else {
 				// If we are in debug mode, display the database record that was sent back
 				if(obj[0] == 'debug'){
@@ -95,26 +113,27 @@
 	    </div>
 	    <br/>
 	    <label for="title">Title: </label>
-	    <input type="text" name="title" id="title" value="" class="input-block-level" />
-	    <span class="error-field" id="title-error"></span>
-	    <br/><br/>
+	    <input type="text" name="title" id="title" value="" class="input-block-level" style="margin-bottom:10px" />
+	    <div id="title-error"></div>
+	    
 	    <label for="description">Description: </label>
-	    <textarea name="description" id="description" class="input-block-level" ></textarea>
-	    <span class="error-field" id="description-error"></span>
-	    <br/>
+	    <textarea name="description" id="description" class="input-block-level"  style="margin-bottom:10px"></textarea>
+	    <div id="description-error"></div>
+	    
 	    <table width="100%">
 		<tr>
 		    <td>
 			<div id="singleDateDiv">
 			    Date:
-			    <input type="text" name="datepicker" id="datepicker" />
+			    <input type="text" name="datepicker" id="datepicker"  style="margin-bottom:10px"/>
+			    <div id="datepicker-error"></div>
 			</div>
-			<span class="error-field" id="datepicker-error"></span>
 			<div id="dateRangeDiv" style="display:none">
 			    From: <input type="text" name="from" id="from" disabled="disabled" />
 			    To: <input type="text" name="to" id="to" disabled="disabled" />
+			    <div id="from-error"></div><div id="to-error"></div>
 			</div>
-			<span class="error-field" id="from-error"></span><span id="to-error"></span>
+			
 		    </td>
 		    <td align="right">
 			<div style="margin:5px" id="dateTypeSelection">
@@ -128,7 +147,7 @@
 	    <br/>
 	    Document: 
 	    <input id="itemfile" name="itemfile" class="filestyle" type="file" data-icon="false" style="position: fixed; left: -500px;">
-	    <span class="error-field" id="itemfile-error"></span>
+	    <div id="itemfile-error"></div>
 	    <br/>
 	    <div align="center" style="margin-top: 20px">
 		<input type="submit" value="Submit" id="submitButton" class="btn btn-primary"/>
