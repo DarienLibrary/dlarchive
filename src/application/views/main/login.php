@@ -13,7 +13,7 @@
     <input type="text" name="username" id="password" value="" />
     <br/>
     <label for="password" style="margin-top:10px;">Password: </label>
-    <input type="text" name="password" id="password" value="" />
+    <input type="password" name="password" id="password" value="" />
     <br/><br/>
     <input type="hidden" name="login_form" value="login_form"/>
     <div align="center">

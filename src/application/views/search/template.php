@@ -73,10 +73,6 @@ echo link_tag('css/footable.standalone.css');
    });
 </script>
 <script type='text/javascript' src="<? echo site_url(); ?>/js/bootstrap-filestyle.min.js"></script>
-<script type='text/javascript'>
- $(function() {
-      $('table').footable();
-    });
-</script>
+
 </body>
 </html>

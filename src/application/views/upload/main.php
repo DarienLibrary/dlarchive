@@ -105,54 +105,88 @@
 	$attributes = array('id' => 'uploadForm', 'method' => 'POST');
 	echo form_open_multipart("upload/uploading",$attributes);	
 ?>
-	    <div align="right">
-		<label class="checkboox" for="debug">
+
+<table width="100%">
+    <tr>
+	<td align="right" colspan="3">
+	    <label class="checkboox" for="debug">
 		    <input type="checkbox" name="debug" id="debug" />
 		    <span>Debuging mode</span>
-		</label>
-	    </div>
-	    <br/>
-	    <label for="title">Title: </label>
+	    </label>
+	</td>
+    </tr>
+    <tr>
+	<td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+	<td width="100px"><label for="title">Title: </label></td>
+	<td align="left" colspan="2">
 	    <input type="text" name="title" id="title" value="" class="input-block-level" style="margin-bottom:10px" />
-	    <div id="title-error"></div>
-	    
-	    <label for="description">Description: </label>
+	</td>
+    </tr>
+    <tr>
+	<td colspan="3"><div id="title-error"></div></td>
+    </tr>
+    <tr>
+	<td  style="vertical-align: top"><label for="description">Description: </label></td>
+	<td colspan="2">
 	    <textarea name="description" id="description" class="input-block-level"  style="margin-bottom:10px"></textarea>
-	    <div id="description-error"></div>
-	    
-	    <table width="100%">
-		<tr>
-		    <td>
-			<div id="singleDateDiv">
-			    Date:
-			    <input type="text" name="datepicker" id="datepicker"  style="margin-bottom:10px"/>
-			    <div id="datepicker-error"></div>
-			</div>
-			<div id="dateRangeDiv" style="display:none">
-			    From: <input type="text" name="from" id="from" disabled="disabled" />
-			    To: <input type="text" name="to" id="to" disabled="disabled" />
-			    <div id="from-error"></div><div id="to-error"></div>
-			</div>
-			
-		    </td>
-		    <td align="right">
-			<div style="margin:5px" id="dateTypeSelection">
-			    <input type="radio" value="single" name="dateType" id="singleDate">Single Date</input>
-			    &nbsp;&nbsp;&nbsp;
-			    <input type="radio" value="range" name="dateType" id ="dateRange">Date Range</input>
-			</div>
-		    </td>
-		</tr>
-	    </table>
-	    <br/>
-	    Document: 
-	    <input id="itemfile" name="itemfile" class="filestyle" type="file" data-icon="false" style="position: fixed; left: -500px;">
-	    <div id="itemfile-error"></div>
-	    <br/>
-	    <div align="center" style="margin-top: 20px">
-		<input type="submit" value="Submit" id="submitButton" class="btn btn-primary"/>
+	</td>
+    </tr>
+    <tr>
+	<td colspan="3"><div id="description-error"></div></td>
+    </tr>
+    <tr>
+	<td><label>Date: </label></td>
+	<td>
+	    <div id="singleDateDiv">
+		<input type="text" name="datepicker" id="datepicker"  style="margin-bottom:10px"/>
 	    </div>
+	    <div id="dateRangeDiv" style="display:none">
+		From: <input type="text" name="from" id="from" disabled="disabled" class="input-medium" />
+		To: <input type="text" name="to" id="to" disabled="disabled" class="input-medium" />
+	    </div>
+	</td>
+	<td align="right" style="vertical-align: middle">
+	  
+		<input type="radio" value="single" name="dateType" id="singleDate" style="margin-bottom: 3px"> Single Date</input>
+		&nbsp;&nbsp;&nbsp;
+		<input type="radio" value="range" name="dateType" id ="dateRange" style="margin-bottom: 3px"> Date Range</input>
+	  
+	</td>
+    </tr>
+    <tr>
+	<td colspan="3">
+	    <div id="datepicker-error"></div><div id="from-error"></div><div id="to-error"></div>
+	</td>
+    </tr>
+    <tr>
+	<td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+	<td><label>Document: </label></td>
+	<td colspan="2">
+	    <input id="itemfile" name="itemfile" class="filestyle" type="file" data-icon="false" style="position: fixed; left: -500px;">
+	</td>
+    </tr>
+    <tr>
+	<td colspan="3"><div id="itemfile-error" style="margin-top:5px"></div></td>
+    </tr>
+    <tr>
+	<td colspan="3"><br/><br/></td>
+    </tr>
+    <tr>
+	<td align="center" colspan="3">
+	    <input type="submit" value="Submit" id="submitButton" class="btn btn-primary"/>
+	</td>
+    </tr>
+    <tr>
+	<td colspan="3">
 	    <div id="progressbox"><div id="progressbar"></div ><div id="statustxt">0%</div ></div>
+	</td>
+    </tr>
+</table>
+	   
 	</form>
 	
 	<div id="debug_area" class="debug_area_off"></div>

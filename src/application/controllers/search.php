@@ -20,7 +20,7 @@ class Search extends MY_Controller {
 		$this->load_view('search/listing/search_results',$data);
 	    } else {
 		$data['view_name'] = 'main';
-		$data['page_title'] = 'Search records that contain a keyword';
+		$data['page_title'] = 'Search the database';
 		$data['active'] = 'search';
 
 		$this->load_view('search/main',$data);
@@ -44,11 +44,11 @@ class Search extends MY_Controller {
 
 		$this->load_view('search/listing/search_results',$data);
 	    } else {
-		$data['view_name'] = 'search_results';
-		$data['page_title'] = 'Search records that contain a keyword';
+		$data['view_name'] = 'main';
+		$data['page_title'] = 'Search the database';
 		$data['active'] = 'search';
 
-		$this->load_view('search/listing/search_results',$data);
+		$this->load_view('search/main',$data);
 	    }
 	}
 	
@@ -70,11 +70,11 @@ class Search extends MY_Controller {
 
 		$this->load_view('search/search_results',$data);
 	    } else {
-		$data['view_name'] = 'search_results';
-		$data['page_title'] = 'Search records that contain a keyword';
+		$data['view_name'] = 'main';
+		$data['page_title'] = 'Search the database';
 		$data['active'] = 'search';
 
-		$this->load_view('search/listing/search_results',$data);
+		$this->load_view('search/main',$data);
 	    }
 	}
 	
