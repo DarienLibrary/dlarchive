@@ -28,8 +28,8 @@ Filter results: <input type="text" id="search-box" /> <span style="color:#CCCCCC
 		echo "<td>$field</td>";
 	    }
 	    echo "<td>";
-		echo "<a href='".  site_url()."/manage/edit/$record[doc_id]'><img src='".  site_url()."/images/edit.png' style='height:20px' /></a> ";
-		echo "<a href='".  site_url()."/manage/delete/$record[doc_id]'><img src='".  site_url()."/images/delete.png' style='height:20px' /></a>";
+		echo "<a href='".  site_url()."manage/edit/$record[doc_id]'><img src='".  site_url()."/images/edit.png' style='height:20px' /></a> ";
+		echo "<a href='".  site_url()."manage/delete/$record[doc_id]'><img src='".  site_url()."/images/delete.png' style='height:20px' /></a>";
 	    echo "</td>";
 	    ?>
 	</tr>
