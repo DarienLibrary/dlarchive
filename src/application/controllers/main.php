@@ -9,7 +9,7 @@ class Main extends MY_Controller {
 		redirect('upload');
 	    }
 	}
-
+	
 	// Authenticates the username and password submitted at the login
 	// For the moment the acceptable username and password are hardcoded
 	private function _validate_login($username,$password){

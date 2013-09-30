@@ -10,11 +10,14 @@ class MY_Controller extends CI_Controller {
 	
 	protected function load_view($viewname,$data=null){
 	    $last_slash = strrpos($viewname, "/");
+	    // if the view name contains at least one slash
 	    if ($last_slash>0) {
+		// το full path για το τοπικό template.php - θα χρειαστεί στην file_exists
 		$view_dir = FCPATH."/application/views/".substr($viewname, 0, strrpos($viewname, "/"));
+		// το short path για το τοπικό template - θα χρειαστεί στην $this->load->view
 		$view_short_path = substr($viewname, 0, strrpos($viewname, "/"));
 	    }
-	    else { 
+	    else { // τα αντίστοιχα path για το γενικό template.php
 		$view_dir = FCPATH."/application/views/";
 		$view_short_path = "";
 	    }

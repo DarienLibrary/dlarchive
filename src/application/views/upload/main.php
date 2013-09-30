@@ -2,6 +2,14 @@
  
         $(document).ready(function() {
         
+	
+	$('#debug').change(function(){
+	    if (!$(this).is(':checked')){
+		$('#debug_area').removeClass('debug_area_on');
+		$('#debug_area').addClass('debug_area_off');
+	    }
+	});
+	
         var progressbox     = $('#progressbox');
         var progressbar     = $('#progressbar');
         var statustxt       = $('#statustxt');
@@ -41,9 +49,9 @@
                     complete: function(response) { // on complete                        
                         submitbutton.removeAttr('disabled'); //enable submit button
                         progressbox.slideUp(); // hide progressbar
-			
+			//
 			// Check if Server and Codeigniter responde with an error. In that case diplay the error
-			if ((response.status != 200)||(response.responseText.indexOf('Fatal error') != -1)) {
+			if ((response.status != 200)||(response.responseText.indexOf('Fatal error') != -1)||(response.responseText.indexOf('Warning') != -1)) {
 			    $('body').append(response.responseText);
 			} else { 
 			    // Parse the response as a JSON object
@@ -77,6 +85,7 @@
 			    } else {
 				// If we are in debug mode, display the database record that was sent back
 				if(obj[0] == 'debug'){
+				    $('#debug_area').append('<div align="center" style="font-weight:bold; font-size: 20px; margin-bottom:15px">Database record for submitted data:</div>');
 				    $('#debug_area').append("<strong>Title:</strong> " + obj[1].doc_title + "<br/>");
 				    $('#debug_area').append("<strong>Description:</strong> "+obj[1].doc_desc + "<br/>");
 				    $('#debug_area').append("<strong>Record date:</strong> "+obj[1].record_date + "<br/>");
@@ -181,7 +190,7 @@
 	</td>
     </tr>
     <tr>
-	<td colspan="3">
+	<td colspan="3" align="center">
 	    <div id="progressbox"><div id="progressbar"></div ><div id="statustxt">0%</div ></div>
 	</td>
     </tr>

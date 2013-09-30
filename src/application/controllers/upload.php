@@ -79,8 +79,11 @@ class Upload extends MY_Controller {
 		}
 		if (isset($_POST['datepicker'])){
 		    $from = new DateTime($this->input->post('datepicker'));
-		    $from = $from->format('Y-n-j G:i:s');
 		    $to = $from;
+		    $from = $from->format('Y-n-j G:i:s');
+		    $to->add(new DateInterval('PT' . 1439 . 'M'));
+		    $to->add(new DateInterval('PT' . 59 . 'S'));
+		    $to = $to->format('Y-n-j G:i:s');
 		} else {
 		    $from = new DateTime($this->input->post('from'));
 		    $from = $from->format('Y-n-j G:i:s');
@@ -109,13 +112,26 @@ class Upload extends MY_Controller {
 		    $command = "java -jar $pdfbox_path ExtractText -console -encoding utf-8 ".$pdf_path;
 		    $pdf_text = shell_exec("$command");
 		    // add one more field in the mysql record
-		    $data['doc_text'] = $pdf_text;
+		    if (isset($_POST['debug'])){
+			 // in case of debugging we don't display all the text but only the first 500 characters
+			 $temp = (strlen($pdf_text) > 500) ? substr($pdf_text, 0, 500) . '...' : $pdf_text;
+			 // json_encode function converts only utf8 characters
+			 $data['doc_text'] = utf8_encode($temp);
+		    } else {
+			 $data['doc_text'] = utf8_encode($pdf_text);
+		    }
 		    
 		}
+		
 		// If the debug checkbox was checked then do not store the data to
 		// database but send the record back for display
 		if (isset($_POST['debug'])){
 		    $ajax_reply = array('debug',$data);
+		    
+//		    echo "<pre>";
+//		    var_dump(json_encode($ajax_reply));
+//		    echo "<br/>error = ".json_last_error();
+//		    die();
 		} else {
 		    // Store that record in the database and send back a redirection URL
 		    $this->load->model('document');
