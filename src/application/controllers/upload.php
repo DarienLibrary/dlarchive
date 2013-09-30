@@ -127,11 +127,6 @@ class Upload extends MY_Controller {
 		// database but send the record back for display
 		if (isset($_POST['debug'])){
 		    $ajax_reply = array('debug',$data);
-		    
-//		    echo "<pre>";
-//		    var_dump(json_encode($ajax_reply));
-//		    echo "<br/>error = ".json_last_error();
-//		    die();
 		} else {
 		    // Store that record in the database and send back a redirection URL
 		    $this->load->model('document');
@@ -142,7 +137,6 @@ class Upload extends MY_Controller {
 	    } else {
 		// Send back the validation errors
 		$ajax_reply = array('false',$this->upload_errors);
-		echo json_encode($ajax_reply);
 	    }
 	}
 	
