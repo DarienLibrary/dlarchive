@@ -35,6 +35,7 @@ class Upload extends MY_Controller {
 	    if (!$this->session->userdata('username')){
 		redirect('login');
 	    }
+	    
 	    // If posted data are valid
 	    if ($this->validate_form()){
 		// Store the uploaded file
@@ -109,8 +110,9 @@ class Upload extends MY_Controller {
 			$pdf_path = $target;
 		    
 		    // extract text from pdf
-		    $command = "java -jar $pdfbox_path ExtractText -console -encoding utf-8 ".$pdf_path;
+		    $command = "java -jar $pdfbox_path ExtractText -console -encoding utf-8 \"".$pdf_path."\"";
 		    $pdf_text = shell_exec("$command");
+		   
 		    // add one more field in the mysql record
 		    if (isset($_POST['debug'])){
 			 // in case of debugging we don't display all the text but only the first 500 characters
@@ -120,9 +122,8 @@ class Upload extends MY_Controller {
 		    } else {
 			 $data['doc_text'] = utf8_encode($pdf_text);
 		    }
-		    
 		}
-		
+
 		// If the debug checkbox was checked then do not store the data to
 		// database but send the record back for display
 		if (isset($_POST['debug'])){
