@@ -134,11 +134,11 @@ class Upload extends MY_Controller {
 		    $this->document->add($data);
 		    $ajax_reply = array('true',base_url().'/upload');
 		}
-		echo json_encode($ajax_reply);
 	    } else {
 		// Send back the validation errors
 		$ajax_reply = array('false',$this->upload_errors);
 	    }
+	    echo json_encode($ajax_reply);
 	}
 	
 }
