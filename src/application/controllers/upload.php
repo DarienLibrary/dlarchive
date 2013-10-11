@@ -17,7 +17,7 @@ class Upload extends MY_Controller {
 	    // Load the validation rules for the upload form
 	    $this->load->helper('form_rules/upload');
 	    // Load the form validator class
-	    $this->load->helper('FormValidator');
+	    $this->load->helper('formvalidator');
 	    // Validate from posted form
 	    $validator = new FormValidator($this->upload_rules);
 	    $valid = $validator->validate();

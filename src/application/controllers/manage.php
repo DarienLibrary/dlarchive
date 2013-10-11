@@ -24,6 +24,13 @@ class Manage extends MY_Controller {
 	    $info = $this->document->getDocument($doc_id);
 	    $info = $info[0];
 	
+	    // Change the date string that retrieved from database to the one
+	    // that is used by jQuery's DatePicker
+	    $time = new Datetime($info['datetime_start']);
+	    $info['datetime_start'] = $time->format('j F Y');
+	    $time = new Datetime($info['datetime_end']);
+	    $info['datetime_end'] = $time->format('j F Y');
+	    
 	    $this->load->helper('form_rules/edit');
 	    
 	    $this->load->library('form_validation');
