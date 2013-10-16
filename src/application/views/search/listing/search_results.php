@@ -8,13 +8,17 @@ Filter results: <input type="text" id="search-box" /> <span style="color:#CCCCCC
 	<tr>
 	    <th data-sort-ignore='true' data-hide='all' data-ignore='true'>ID</th>
 	    <th data-sort-initial='ascennding' data-toggle='true'>Title</th>
-	    <th data-sort-ignore='true' >Description</th>
+	    <th data-sort-ignore='true' data-hide="all">Description</th>
 	    <th data-sort-ignore='true' data-hide="all">PDF Text</th>
-	    <th data-sort-ignore='true' data-hide='phone,tablet'>Last edited</th>
+	    <th data-sort-ignore='true' data-hide='all'>Last edited</th>
 	    <th data-sort-ignore='true' data-hide='phone'>From</th>
 	    <th data-sort-ignore='true' data-hide='phone'>To</th>
 	    <th data-sort-ignore='true'>Filename</th>
 	    <th data-hide='phone,tablet'>Format</th>
+	    <th data-hide='phone,tablet'>File size (KB)</th>
+	    <th data-hide='phone,tablet'>Duration (sec)</th>
+	    <th data-hide='all'>x Resolution (pixel)</th>
+	    <th data-hide='all'>y Resolution (pixel)</th>
 	    <th data-sort-ignore='true' style="min-width:50px">Actions</th>
 	</tr>
     </thead>

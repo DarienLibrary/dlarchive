@@ -41,12 +41,17 @@ class Upload extends MY_Controller {
 		// Store the uploaded file
 		$source = $_FILES['itemfile']['tmp_name'];
 		$filename = $_FILES['itemfile']['name'];
-		$target = UPLOADPATH.$filename;
+		$target = UPLOADPATH.$filename;		
 		
-		if (!isset($_POST['debug'])) 
+		$filesize = round($_FILES['itemfile']['size']/1000,1);
+		
+		if (!isset($_POST['debug'])) {
 		    // Move the temporary file to the resource's folder
 		    move_uploaded_file($source,$target);
-
+		    $filepath = $target;
+		} else {
+		    $filepath = $source;
+		}
 		// Generate the mysql record
 		$now = new DateTime();
 		$time = $now->format('Y-n-j G:i:s');
@@ -62,9 +67,21 @@ class Upload extends MY_Controller {
 			$format = 'image';
 			break;
 		    case 'mp3':
+		    case 'wav':
+		    case 'aiff':
+		    case 'aif':
+		    case 'aifc':
+		    case 'snd':
 			$format = 'audio';
 			break;
 		    case 'mp4':
+		    case 'mov':
+		    case 'divx':
+		    case 'mpeg':
+		    case 'flv':
+		    case '3gp':
+		    case 'wmv':
+		    case 'vob':
 			$format = 'video';
 			break;
 		    case 'txt':
@@ -100,7 +117,24 @@ class Upload extends MY_Controller {
 			'format'	    =>	$format,
 			'datetime_start'    =>	$from,
 			'datetime_end'	    =>	$to,
+			'filesize'	    =>	$filesize,
 		    );
+		
+		if ($format == 'video'){
+		    $this->load->library('getid3/getid3');
+		    $multimedia_info = $this->getid3->analyze($filepath);
+		    getid3_lib::CopyTagsToComments($multimedia_info);
+		    $data['playtime'] = round($multimedia_info['playtime_seconds'],1);
+		    $data['resolution_x'] = $multimedia_info['video']['resolution_x'];
+		    $data['resolution_y'] = $multimedia_info['video']['resolution_y'];
+		} 
+		
+		if ($format == 'audio') {
+		    $this->load->library('getid3/getid3');
+		    $multimedia_info = $this->getid3->analyze($filepath);
+		    getid3_lib::CopyTagsToComments($multimedia_info);
+		    $data['playtime'] = round(($multimedia_info['playtime_seconds']),1);
+		}
 		
 		if ($format == 'pdf'){
 		    $pdfbox_path = FCPATH."third_party/pdfbox.jar";

@@ -54,7 +54,6 @@
 			complete: function(response) { // on complete START                       
 			    progressbox.slideUp(); // hide progressbar
 			    
-			    
 			    // Check if Server and Codeigniter responde with an error. In that case diplay the error
 			    if ((response.status != 200)||(response.responseText.indexOf('Fatal error') != -1)||(response.responseText.indexOf('Warning') != -1)) {
 				$('body').append(response.responseText);
@@ -97,9 +96,18 @@
 					$('#debug_area').append("<strong>Datetime start:</strong> "+obj[1].datetime_start + "<br/>");
 					$('#debug_area').append("<strong>Datetime end:</strong> "+obj[1].datetime_end + "<br/>");
 					$('#debug_area').append("<strong>Filename:</strong> "+obj[1].filename + "<br/>");
+					$('#debug_area').append("<strong>File size:</strong> "+obj[1].filesize + " KB<br/>");
 					$('#debug_area').append("<strong>Format:</strong> "+obj[1].format + "<br/>");
 					if (obj[1].format == 'pdf'){
 					    $('#debug_area').append("<strong>PDF Text:</strong> "+obj[1].doc_text + "<br/>");
+					}
+					if(obj[1].format == 'video'){
+					    $('#debug_area').append("<strong>Playtime:</strong> "+obj[1].playtime + " sec<br/>");
+					    $('#debug_area').append("<strong>Resolution x:</strong> "+obj[1].resolution_x + "<br/>");
+					    $('#debug_area').append("<strong>Resolution y:</strong> "+obj[1].resolution_y + "<br/>");
+					}
+					if (obj[1].format == 'audio'){
+					    $('#debug_area').append("<strong>Playtime:</strong> "+obj[1].playtime + " sec<br/>");
 					}
 					$('#debug_area').removeClass('debug_area_off');
 					$('#debug_area').addClass('debug_area_on');

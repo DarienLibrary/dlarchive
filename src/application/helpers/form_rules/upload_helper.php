@@ -12,7 +12,7 @@ $ci->upload_rules = array(
     ),
     'itemfile'	=>  array(
 	'required'  =>	true,
-	'extensions'=>	'jpg,png,giff,bmp,tiff,pdf,txt,rtf,doc,odt,docx,mp3,mp4',
+	'extensions'=>	'jpg,png,giff,bmp,tiff,pdf,txt,rtf,doc,odt,docx,mp3,mp4,flv,mov,vob,3gp,aiff,aif,aifc,snd,divx,wav',
     ),
     'datepicker'=>  array(
 	'required_ifnot'  =>	'from',
