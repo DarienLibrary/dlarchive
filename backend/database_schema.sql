@@ -4,7 +4,7 @@ USE `archiver`;
 --
 -- Host: localhost    Database: archiver
 -- ------------------------------------------------------
--- Server version	5.0.51b-community-nt-log
+-- Server version	5.5.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,10 +18,6 @@ USE `archiver`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
---
-
---
 -- Table structure for table `content`
 --
 
@@ -29,7 +25,7 @@ DROP TABLE IF EXISTS `content`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `content` (
-  `doc_id` int(10) NOT NULL auto_increment,
+  `doc_id` int(10) NOT NULL AUTO_INCREMENT,
   `doc_title` varchar(254) NOT NULL,
   `doc_desc` text NOT NULL,
   `doc_text` mediumtext,
@@ -38,8 +34,12 @@ CREATE TABLE `content` (
   `datetime_end` datetime NOT NULL,
   `filename` varchar(48) NOT NULL,
   `format` enum('pdf','image','audio','video','text') NOT NULL,
-  PRIMARY KEY  (`doc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `filesize` float DEFAULT NULL,
+  `playtime` float DEFAULT NULL,
+  `resolution_x` smallint(6) DEFAULT NULL,
+  `resolution_y` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`doc_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ CREATE TABLE `content` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-24 11:57:43
+-- Dump completed on 2013-10-16 13:21:35
