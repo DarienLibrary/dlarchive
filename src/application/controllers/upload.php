@@ -13,7 +13,8 @@ class Upload extends MY_Controller {
 	    $this->load_view('upload/main',$data);
 	}
 	
-	private function validate_form(){	// Checks if the form data posted are valid
+	// Checks if the form data posted are valid
+	private function validate_form(){	
 	    // Load the validation rules for the upload form
 	    $this->load->helper('form_rules/upload');
 	    // Load the form validator class
@@ -30,6 +31,7 @@ class Upload extends MY_Controller {
 		return true;
 	}
 	
+	// Handles the AJAX request for file uploading
 	public function uploading()
 	{
 	    if (!$this->session->userdata('username')){
@@ -52,7 +54,10 @@ class Upload extends MY_Controller {
 		} else {
 		    $filepath = $source;
 		}
-		// Generate the mysql record
+		
+		// Generate the mysql record //
+		
+		// Get the current date/time
 		$now = new DateTime();
 		$time = $now->format('Y-n-j G:i:s');
 		
@@ -99,6 +104,7 @@ class Upload extends MY_Controller {
 		    $from = new DateTime($this->input->post('datepicker'));
 		    $to = $from;
 		    $from = $from->format('Y-n-j G:i:s');
+		    // Set the 'datetime_end' field equal to the end of the same day
 		    $to->add(new DateInterval('PT' . 1439 . 'M'));
 		    $to->add(new DateInterval('PT' . 59 . 'S'));
 		    $to = $to->format('Y-n-j G:i:s');
@@ -120,6 +126,7 @@ class Upload extends MY_Controller {
 			'filesize'	    =>	$filesize,
 		    );
 		
+		// Extract video file metadata
 		if ($format == 'video'){
 		    $this->load->library('getid3/getid3');
 		    $multimedia_info = $this->getid3->analyze($filepath);
@@ -129,6 +136,7 @@ class Upload extends MY_Controller {
 		    $data['resolution_y'] = $multimedia_info['video']['resolution_y'];
 		} 
 		
+		// Extract audio file metadata
 		if ($format == 'audio') {
 		    $this->load->library('getid3/getid3');
 		    $multimedia_info = $this->getid3->analyze($filepath);
@@ -136,6 +144,7 @@ class Upload extends MY_Controller {
 		    $data['playtime'] = round(($multimedia_info['playtime_seconds']),1);
 		}
 		
+		// Extract the text from PDF
 		if ($format == 'pdf'){
 		    $pdfbox_path = FCPATH."third_party/pdfbox.jar";
 		    if (isset($_POST['debug'])) 
@@ -143,7 +152,7 @@ class Upload extends MY_Controller {
 		    else 
 			$pdf_path = $target;
 		    
-		    // extract text from pdf
+		    // Using the PDFBox library for text extraction
 		    $command = "java -jar $pdfbox_path ExtractText -console -encoding utf-8 \"".$pdf_path."\"";
 		    $pdf_text = shell_exec("$command");
 		    

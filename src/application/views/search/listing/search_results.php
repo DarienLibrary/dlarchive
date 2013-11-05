@@ -3,7 +3,7 @@
 Filter results: <input type="text" id="search-box" /> <span style="color:#CCCCCC">(searching through all fields)</span>
 </div>
 <br/>
-<table border="1px solid grey" cellpadding="3px" class="footable toggle-square" data-filter="#search-box" data-filter-text-only="true">
+<table border="1px solid grey" style="empty-cells:hide" cellpadding="3px" class="footable toggle-square" data-filter="#search-box" data-filter-text-only="true">
     <thead>
 	<tr>
 	    <th data-sort-ignore='true' data-hide='all' data-ignore='true'>ID</th>
@@ -16,7 +16,7 @@ Filter results: <input type="text" id="search-box" /> <span style="color:#CCCCCC
 	    <th data-sort-ignore='true'>Filename</th>
 	    <th data-hide='phone,tablet'>Format</th>
 	    <th data-hide='phone,tablet'>File size (KB)</th>
-	    <th data-hide='phone,tablet'>Duration (sec)</th>
+	    <th data-hide='all'>Duration (sec)</th>
 	    <th data-hide='all'>x Resolution (pixel)</th>
 	    <th data-hide='all'>y Resolution (pixel)</th>
 	    <th data-sort-ignore='true' style="min-width:50px">Actions</th>
