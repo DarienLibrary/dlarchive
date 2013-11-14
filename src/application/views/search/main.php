@@ -16,6 +16,8 @@
 		File format:
 	    </td>
 	    <td>
+		<table style="font-size:13px; color:grey;" width="100%">
+		    <tr><td align="left">
 		    <select name="file_format" id="file_format" class="input-medium">
 			<option value="all">All formats</option>
 			<option value="text">Text</option>
@@ -24,6 +26,17 @@
 			<option value="audio">Audio</option>
 			<option value="video">Video</option>
 		    </select>
+			</td><td align="right">
+		Results per page: 
+		    <select name="results_per_page" id="results_per_page" class="input-mini">
+			<option value="10">10</option>
+			<option value="20" selected="selected">20</option>
+			<option value="50">50</option>
+			<option value="100">100</option>
+			<option value="all">1000</option>
+		    </select>
+			</td></tr>
+		</table>
 	    </td>
 	</tr>
 	<tr>

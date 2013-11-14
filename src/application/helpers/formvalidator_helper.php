@@ -6,7 +6,7 @@ class FormValidator {
     private $errors = array();	// This array contains the validation errors, if there is any. For each form field
 				// only the first validation error is stored. After the first validation error, the
 				// validation stops for that field. 
-     
+    
     function __construct($formRules) {
 	if (is_array($formRules)) {
 	    $this->rules = $formRules;
